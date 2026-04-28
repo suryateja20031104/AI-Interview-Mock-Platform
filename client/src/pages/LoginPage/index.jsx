@@ -59,7 +59,7 @@ function LoginPage() {
       setLoading(false);
     }
   };
-
+  console.log('LoginPage rendered');
   return (
     <div className="login-page">
       {/* ---- Top Nav Bar ---- */}
