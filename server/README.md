@@ -65,10 +65,10 @@ Main API routes are mounted under `/api`:
 
 ### Images
 
-Both image endpoints require a bearer token. Upload one PNG using multipart form-data with the `image` field:
+These image endpoints are public and do not require a bearer token. Upload one PNG using multipart form-data with the `image` field:
 
 - `POST /api/images/upload` - stores the PNG in MongoDB and returns its metadata and `dataUrl`.
-- `GET /api/images` - returns the authenticated user's stored PNG images, each with a `dataUrl` suitable for an image `src`.
+- `GET /api/images` - returns all stored PNG images, each with a `dataUrl` suitable for an image `src`.
 
 The upload limit is 10 MB. Non-PNG files are rejected.
 
