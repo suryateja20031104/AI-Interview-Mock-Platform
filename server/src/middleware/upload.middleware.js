@@ -30,6 +30,14 @@ const audioFilter = (req, file, cb) => {
   }
 };
 
+const imageFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(new Error('Only PNG images are allowed.'), false);
+  }
+};
+
 // Create upload middleware instances with size limits
 // "resume" field for PDF resume uploads (max 10MB)
 export const uploadResume = multer({
@@ -44,3 +52,9 @@ export const uploadAudio = multer({
   fileFilter: audioFilter,
   limits: { fileSize: 25 * 1024 * 1024 },
 }).single('audio');
+
+export const uploadImage = multer({
+  storage,
+  fileFilter: imageFilter,
+  limits: { fileSize: 10 * 1024 * 1024 },
+}).single('image');
